@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@font-face {
+  font-family: digital;
+  src: url(fonts/ds-digi.ttf);
+}
+
+* {
+  font-family: Poppins;
+  letter-spacing: 1.5px;
+  color: white;
+  font-size: 70px;
+  font-weight: 700;
+}
+
+.container {
+  background-color: black;
+  border-radius: 15px;
+  width: 25%;
+  margin: auto;
+  padding-top: 0;
+  margin-top: 30px;
+}
+
+.user-input {
+  background-color: #000000;
+  border-radius: 15px;
+  text-align: right;
+  padding-top: 0;
+  height: 95%;
+}
+
+.input-text {
+  margin: 10px;
+  font-family: digital;
+  font-weight: 100;
+  font-size: 90px;
+  padding-top: 130px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.line:last-child {
+  padding-bottom: 15px;
+}
+
+.background {
+  background-color: #A5A5A5;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  transition: background-color 1s;
+}
+
+.background:hover {
+  cursor: pointer;
+}
+
+.text {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 300;
+  font-size: 35px;
+}
+
+#minus-plus-symbol {
+  font-size: 45px;
+}
+
+#divide-symbol {
+  font-size: 50px;
+}
+
+.black-text {
+  color: #000000;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.symbol {
+  font-weight: 500;
+}
+
+.semi-bold {
+  font-family: "DM Sans"; 
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+.small {
+  font-size: 30px;
+}
+
+.orange-background {
+  background-color: #FF9F0A;
+}
+
+.zero-background {
+  width: 165px;
+  border-radius: 75px;
+}
+
+.dark-backgorund {
+  background-color: #333333;
+}
+
+span.clicked {
+  animation: changeBackground 0.6s;
+}
+
+span.clickedEq {
+  animation: changeBackgroundEq 0.5s;
+}
+
+#zero {
+  position: absolute;
+  top: 50%;
+  left: 21%;
+  transform: translate(-50%, -50%);
+}
+
+.move {
+  top: 48%;
+  left: 52%;
+}
+
+.minus {
+  padding-top: 3px;
+  padding-left: 0px;
+}
+
+.active {
+  background-color: #ffffff;
+}
+
+.active p {
+  color: #FF9F0A;
+}
+
+@keyframes changeBackground {
+  0% {
+    background-color: #333333;
+  }
+  25% {
+    background-color: #717171;
+  }
+  100% {
+    background-color: #333333;
+  }
+}
+
+@keyframes changeBackgroundEq {
+  0% {
+    background-color: #FF9F0A;
+  }
+  25% {
+    background-color: #ffc368;
+    box-shadow: inset 0px 0px 10px 0.5px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    background-color: #FF9F0A;
+  }
+}

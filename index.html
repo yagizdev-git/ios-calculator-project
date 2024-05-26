@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator Project</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <div class="user-input">
+      <p class="input-text">
+        <!-- User iput here. --> 0
+      </p>
+    </div>
+    <div class="buttons">
+      <div id="line1" class="line">
+        <!-- C    +/-   %   /  -->        
+        <span class="background"><p class="text black-text small semi-bold" id="ac">AC</p></span>
+        <span class="background"><p class="text black-text small semi-bold">+/-</p></span>
+        <span class="background"><p class="text black-text small semi-bold">%</p></span>
+        <span class="background orange-background"><p class="text symbol">÷</p></span>
+      </div>
+      <div id="line2" class="line">
+        <!-- 7   8   9   X -->
+        <span class="background dark-backgorund"><p class="text">7</p></span>
+        <span class="background dark-backgorund"><p class="text">8</p></span>
+        <span class="background dark-backgorund"><p class="text">9</p></span>
+        <span class="background orange-background"><p class="text move">⨯</p></span>
+      </div>
+      <div id="line3" class="line">
+        <!-- 4   5   6   - -->
+        <span class="background dark-backgorund"><p class="text">4</p></span>
+        <span class="background dark-backgorund"><p class="text">5</p></span>
+        <span class="background dark-backgorund"><p class="text">6</p></span>
+        <span class="background orange-background"><p class="text move minus symbol">-</p></span>
+      </div>
+      <div id="line4" class="line">
+        <!-- 1   2   3   + -->
+        <span class="background dark-backgorund"><p class="text">1</p></span>
+        <span class="background dark-backgorund"><p class="text">2</p></span>
+        <span class="background dark-backgorund"><p class="text">3</p></span>
+        <span class="background orange-background"><p class="text move symbol">+</p></span>
+      </div>
+      <div id="line5" class="line">
+        <!-- 0   .   = -->
+        <span class="background zero-background dark-backgorund"><p class="text" id="zero">0</p></span>
+        <span class="background dark-backgorund"><p class="text">.</p></span>
+        <span class="background orange-background"><p class="text symbol">=</p></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
