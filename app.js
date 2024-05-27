@@ -14,11 +14,16 @@ inputText.textContent = inputValue;
 eventListeners();
 
 function eventListeners () {
-  // Identifying click event listener for every number that triger writeInput function.
   numbers.forEach(index => {
     buttons[index].addEventListener("click", writeInput);
   });
-  // Identifying click event listener for every symbol that triger otherFunctions function.
+  // Identifying "keyup" event listener for every number that triger writeInput function.
+  document.addEventListener("keyup", function(e) {
+    if (e.key >= 0 && e.key <= 9) {
+      writeInput(e);
+    }
+  });
+  // Identifying "click" event listener for every symbol that triger otherFunctions function.
   symbols.forEach(index => {
     buttons[index].addEventListener("click",otherFunctions);
   });
@@ -35,12 +40,15 @@ function writeInput (e) {
   let myActive = document.querySelector("span.active");
   let trgt = e.target.textContent;
   let myTarget = parseInt(trgt);
-
-  if (inputValue.length === 1 && inputValue[0] === 0) {
+  if (inputValue.length === 1 && inputValue[0] === 0 && trgt !== ".") {
     inputValue = [];
     inputValue.push(myTarget);
+  } else if (inputValue.length === 1 && inputValue[0] === 0 && trgt === ".") {
+    inputValue[0] = inputValue[0]+".";
+  } else if (inputValue[0] !== 0 && trgt === ".") {
+    inputValue[0] = inputValue[0] + trgt;
   } else {
-    let combined = parseInt(inputValue[0].toString()+myTarget.toString());
+    let combined = parseFloat(inputValue[0].toString()+trgt);
     inputValue[0] = combined
   }
   
@@ -63,8 +71,6 @@ function writeInput (e) {
         break;
     }
   }
-  
-
   animationFunction(e);
 }
 
@@ -82,13 +88,32 @@ function otherFunctions (e) {
       }
     })
   }
-  if (trgt === "%") modFunction();
-  if (trgt === "+/-") minusPlusFunction();
-  if (trgt === "÷") activeClass(trgt); division(e);
-  if (trgt === "⨯") activeClass(trgt); multiplication(e); 
-  if (trgt === "-") activeClass(trgt); subtraction(e);
-  if (trgt === "+") activeClass(trgt); addition(e);
-  if (trgt === "=") animationFunctionEqual(e); resultOpr();
+  if (trgt === "%") {
+    modFunction();
+  }
+  if (trgt === "+/-") {
+    minusPlusFunction();
+  }
+  if (trgt === "÷") {
+    activeClass(trgt); 
+    division(e);
+  }
+  if (trgt === "⨯") {
+    activeClass(trgt);
+    multiplication(e);
+  } 
+  if (trgt === "-") {
+    activeClass(trgt);
+    subtraction(e);
+  }
+  if (trgt === "+") {
+    activeClass(trgt);
+    addition(e);
+  }
+  if (trgt === "=") {
+    animationFunctionEqual(e);
+    resultOpr();
+  }
 }
 
 // MOD BUTTON FUNCTION
@@ -189,7 +214,6 @@ function division (e) {
   if (e.target.textContent === "÷") {
     enteredValueFirst = inputValue[0];
   }
-  
   if (e.target.classList.contains("dark-backgorund") || ["0","1","2","3","4","5","6","7","8","9","."].includes(e.target.textContent)) {
     if (transition) {
       inputValue[0] = 0;
@@ -223,7 +247,6 @@ function subtraction (e) {
   if (e.target.textContent === "-") {
     enteredValueFirst = inputValue[0];
   }
-  
   if (e.target.classList.contains("dark-backgorund") || ["0","1","2","3","4","5","6","7","8","9","."].includes(e.target.textContent)) {
     if (transition) {
       inputValue[0] = 0;
@@ -240,7 +263,6 @@ function addition (e) {
   if (e.target.textContent === "+") {
     enteredValueFirst = inputValue[0];
   }
-  
   if (e.target.classList.contains("dark-backgorund") || ["0","1","2","3","4","5","6","7","8","9","."].includes(e.target.textContent)) {
     if (transition) {
       inputValue[0] = 0;
@@ -248,13 +270,14 @@ function addition (e) {
       transition = false;
     } 
     if (!transition) {
-      enteredValueLast = inputValue[0] ;
+      enteredValueLast = inputValue[0];
     }
   }
 }
 
 function resultOpr() {
   let myActive = document.querySelector("span.active");
+  let eq = document.querySelector(".clickedEq");
   
   if (myActive !== null) {
     switch (myActive.textContent) {
@@ -275,10 +298,19 @@ function resultOpr() {
         break;
       case "+" :
         if ((enteredValueFirst / enteredValueLast) !== Infinity) {
-          inputValue[0] = (enteredValueFirst + enteredValueLast);
+          inputValue[0] = (enteredValueFirst + parseInt(enteredValueLast));
         }
-        break;  
+        break;
     }
   }
+  if (eq) {
+    buttons.forEach(index => {
+      if (index.classList.contains("active")) {
+        index.classList.remove("active");
+      }
+    })
+    transition = true;
+    enteredValueFirst = null;
+    enteredValueLast = null;
+  }
 }
-
