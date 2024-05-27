@@ -130,10 +130,10 @@ function minusPlusFunction () {
 
   if (!myValueStr.includes("-")) {
     combined = "-" + myValueStr;
-    inputValue[0] = parseInt(combined);
+    inputValue[0] = parseFloat(combined);
   } else {
     myValueStr = myValueStr.replace("-", "");
-    inputValue[0] = parseInt(myValueStr);
+    inputValue[0] = parseFloat(myValueStr);
   }
 }
 
@@ -298,7 +298,7 @@ function resultOpr() {
         break;
       case "+" :
         if ((enteredValueFirst / enteredValueLast) !== Infinity) {
-          inputValue[0] = (enteredValueFirst + parseInt(enteredValueLast));
+          inputValue[0] = parseFloat((enteredValueFirst + parseFloat(enteredValueLast)).toFixed(1));
         }
         break;
     }
